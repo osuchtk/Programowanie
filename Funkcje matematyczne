@@ -1,0 +1,91 @@
+#include "pch.h"
+#include <iostream>
+#include <math.h>
+#include <cstdio>
+#define PI 3.14159265
+
+
+double add(double a, double b)
+{
+	return a + b;
+}
+
+double sub(double a, double b)
+{
+	return a - b;
+}
+
+double mul(double a, double b)
+{
+	return a * b;
+}
+
+double div(double a, double b)
+{
+	return a / b;
+}
+
+double mysin(double a)
+{
+	return sin((a * PI) / 180);
+}
+
+double mycos(double a)
+{
+	return cos((a * PI) / 180);
+}
+
+int main()
+{
+	printf("TEST DODAWANIA\n");
+	printf("Test 1. Oczekiwano: 7.229.  Uzyskano %g \n", add(4.45, 2.779));
+	printf("Test 2. Oczekiwano: 539.4.  Uzyskano %g \n", add(471.5, 67.90));
+	printf("Test 3. Oczekiwano: 66.35.  Uzyskano %g \n", add(12.12, 54.23));
+	printf("Test 4. Oczekiwano: 43.007.  Uzyskano %g \n", add(38.908, 4.099));
+	printf("Test 5. Oczekiwano: 132.123.  Uzyskano %g \n", add(0.123, 132.0));
+	printf("Test 6. Oczekiwano: 17.6.  Uzyskano %g \n\n", add(7.9, 9.7));
+
+	printf("TEST ODEJMOWANIA\n");
+	printf("Test 1. Oczekiwano: 4.24.  Uzyskano %g \n", sub(9.45, 5.21));
+	printf("Test 2. Oczekiwano: -1.11.  Uzyskano %g \n", sub(6.66, 7.77));
+	printf("Test 3. Oczekiwano: -4.954.  Uzyskano %g \n", sub(4.09, 9.044));
+	printf("Test 4. Oczekiwano: 22.17.  Uzyskano %g \n", sub(34.57, 12.4));
+	printf("Test 5. Oczekiwano: 4.091.  Uzyskano %g \n", sub(6.67, 2.579));
+	printf("Test 6. Oczekiwano: 1.531.  Uzyskano %g \n\n", sub(8.34, 6.809));
+
+	printf("TEST MNOZENIA\n");
+	printf("Test 1. Oczekiwano: 12.876 Uzyskano %g \n", mul(2.22, 5.8));
+	printf("Test 2. Oczekiwano: 66.24.  Uzyskano %g \n", mul(6.9, 9.6));
+	printf("Test 3. Oczekiwano: 0.9407.  Uzyskano %g \n", mul(4.09, 0.23));
+	printf("Test 4. Oczekiwano: 7.7184.  Uzyskano %g \n", mul(5.76, 1.34));
+	printf("Test 5. Oczekiwano: 1.11776.  Uzyskano %g \n", mul(0.998, 1.12));
+	printf("Test 6. Oczekiwano: 80.8486.  Uzyskano %g \n\n", mul(8.6, 9.401));
+
+	printf("TEST DZIELENIA\n");
+	printf("Test 1. Oczekiwano: 0.19283.  Uzyskano %g \n", div(1.56, 8.09));
+	printf("Test 2. Oczekiwano: 8.1(5).  Uzyskano %g \n", div(3.67, 0.45));
+	printf("Test 3. Oczekiwano: 0.79067.  Uzyskano %g \n", div(7.63, 9.65));
+	printf("Test 4. Oczekiwano: 0.350(6).  Uzyskano %g \n", div(0.1578, 0.45));
+	printf("Test 5. Oczekiwano: 1.10469.  Uzyskano %g \n", div(8.23, 7.45));
+	printf("Test 6. Oczekiwano: 4.21238.  Uzyskano %g \n\n", div(4.76, 1.13));
+
+	printf("TEST COSUNUSA\n");
+	printf("Test 1. Oczekiwano: -0.8829.  Uzyskano %g \n", mycos(152));
+	printf("Test 2. Oczekiwano: 0.0872.  Uzyskano %g \n", mycos(85));
+	printf("Test 3. Oczekiwano: 0.9659.  Uzyskano %g \n", mycos(375));
+	printf("Test 4. Oczekiwano: 0.9781.  Uzyskano %g \n", mycos(12));
+	printf("Test 5. Oczekiwano: 0.829.  Uzyskano %g \n", mycos(34));
+	printf("Test 6. Oczekiwano: 0.6947.  Uzyskano %g \n\n", mycos(46));
+
+	printf("TEST SINUSA\n");
+	printf("Test 1. Oczekiwano: 0.7314.  Uzyskano %g \n", mysin(47));
+	printf("Test 2. Oczekiwano: -0.6691.  Uzyskano %g \n", mysin(222));
+	printf("Test 3. Oczekiwano: -0.454.  Uzyskano %g \n", mysin(333));
+	printf("Test 4. Oczekiwano: 0.9336.  Uzyskano %g \n", mysin(111));
+	printf("Test 5. Oczekiwano: -0.4848. Uzyskano %g \n", mysin(209));
+	printf("Test 6. Oczekiwano: 0.8988.  Uzyskano %g \n\n", mysin(476));
+
+	
+}
+
+
