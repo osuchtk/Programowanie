@@ -1,0 +1,83 @@
+#include "pch.h"
+#include <iostream>
+#include <math.h>
+#include <cstdio>
+#define PI 3.14159265
+
+
+double add(double a, double b)
+{
+	return a + b;
+}
+
+double sub(double a, double b)
+{
+	return a - b;
+}
+
+double mul(double a, double b)
+{
+	return a * b;
+}
+
+double div(double a, double b)
+{
+	return a / b;
+}
+
+double mysin(double a)
+{
+	return sin((a * PI) / 180);
+}
+
+double mycos(double a)
+{
+	return cos((a * PI) / 180);
+}
+
+
+int main()
+{
+	printf("Kalkulator wesja 1.0\nNalezy podac dwie liczby oraz znak operacji (+,-,*,/ lub c lub s, gdzie c wyznacza cosinus z kata a, s wyznacza sinus z kata a).\nW przypadku korzystania z c lub c wartosc kata zostanie wyznaczona z pierwszej wartosci, druga zostanie pominieta.\n\n");
+	for (;;)
+	{
+		float a;
+		float b;
+		char operacja;
+
+		scanf_s("%f", &a);
+		scanf_s("%f", &b);
+
+		scanf_s("%c", &operacja);
+
+		operacja = getchar();
+
+		switch (operacja)
+		{
+		case '+':
+			printf("%f\n\n", add(a, b));
+			break;
+		case '-':
+			printf("%f\n\n", sub(a, b));
+			break;
+		case '*':
+			printf("%f\n\n", mul(a, b));
+			break;
+		case '/':
+			printf("%f\n\n", div(a, b));
+			break;
+		case 's':
+			printf("%f\n\n", mysin(a));
+			break;
+		case 'c':
+			printf("%f\n\n", mycos(a));
+			break;
+		default:
+			printf("Nieznana operacja.\n\n");
+			break;
+
+		}
+	}
+
+
+}
