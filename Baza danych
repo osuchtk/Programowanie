@@ -1,0 +1,76 @@
+#include "pch.h"
+#include <iostream>
+
+
+void Createrecord()
+{
+
+}
+
+void Review()
+{
+
+}
+
+void Update()
+{
+
+}
+
+void Delete()
+{
+
+}
+
+int main()
+{
+	printf("BAZA DANYCH v1.0\nC- tworzenie wpisow\nR- przegladanie danych\nU- aktualizacja wspiow\nD- kasowanie wspisow\nE- wyjscie z programu\n");
+
+	//tworzenie pliku
+	char fileName[100];
+
+	sprintf_s(fileName, "Baza.txt");
+	FILE *outputFile;
+	fopen_s(&outputFile, fileName, "w");
+	fclose(outputFile);
+
+	//tworzenie struktury na dane
+	struct ID
+	{
+		char name[100];
+		char surname[100];
+		int telephone[20];
+	};
+
+	//i tu sie zaczyna zabawa
+	for (; ;)
+	{
+		char znak;
+		znak = getchar();
+
+		switch (znak)
+		{
+		case 'C':
+			Createrecord();
+			break;
+
+		case 'R':
+			Review();
+			break;
+
+		case 'U':
+			Update();
+			break;
+
+		case 'D':
+			Delete();
+
+		case 'E':
+			exit(0);
+			break;
+
+		default:
+			printf("Blad\n");
+		}
+	}
+}
