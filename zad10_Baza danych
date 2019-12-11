@@ -2,26 +2,6 @@
 #include <iostream>
 
 
-void Createrecord()
-{
-
-}
-
-void Review()
-{
-
-}
-
-void Update()
-{
-
-}
-
-void Delete()
-{
-
-}
-
 int main()
 {
 	printf("BAZA DANYCH v1.0\nC- tworzenie wpisow\nR- przegladanie danych\nU- aktualizacja wspiow\nD- kasowanie wspisow\nE- wyjscie z programu\n");
@@ -46,24 +26,31 @@ int main()
 	for (; ;)
 	{
 		char znak;
+		char potwierdzenie='Q';
 		znak = getchar();
 
 		switch (znak)
 		{
 		case 'C':
-			Createrecord();
+		
 			break;
 
 		case 'R':
-			Review();
+		
 			break;
 
 		case 'U':
-			Update();
+		
 			break;
 
 		case 'D':
-			Delete();
+			printf("Na pewno chcesz usunac? T-tak, N-nie\n");
+			scanf_s("%c", potwierdzenie);
+			if (potwierdzenie == 'T' && potwierdzenie == 't') {}
+
+
+			if (potwierdzenie == 'N' && potwierdzenie == 'n') {}
+			break;
 
 		case 'E':
 			exit(0);
@@ -74,3 +61,7 @@ int main()
 		}
 	}
 }
+
+
+
+
