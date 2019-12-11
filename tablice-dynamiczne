@@ -111,10 +111,11 @@ int main()
 
 	printf("TAB3: ");
 	float *tab3;
-	for (size_t i = 0; i < 10; i++)
-	{
-		tab3 = add(tab, tab2, n);
-		printf("%f", tab3[i]);
-		free(tab3);
-	}
+	tab3 = add(tab, tab2, n);
+	free(tab);
+	free(tab2);
+
+	values_print(tab3, 10);
+	free(tab3);
+
 }
