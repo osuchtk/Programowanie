@@ -29,9 +29,6 @@ void fileWrite()
 		}
 		puts("Plik otwarty pomyslnie!");
 
-
-
-
 		fclose(outputFile);
 	}
 }
@@ -44,6 +41,33 @@ void result()
 		sprintf_s(fileName, "result.txt");
 		FILE *outputFile;
 		fopen_s(&outputFile, fileName, "w");
+		
+		int numbersCount[11] = { 0,0,0,0,0,0,0,0,0,0 };
+		int maxNumbersInRow[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
+		int actualInRow[2] = { 0,0 };			//pierwszy element tablicy to aktualnie sprawdzana liczba a drugi to liczba jej wystapien pod rzad
+
+		int data[100];
+		for (int j = 0; j < 100; j++)
+		{
+			fscanf_s(inputFile, "%d", &data[j]);
+			numbersCount[data[j]]++;
+			if (data[j] == actualInRow[0]) actualInRow[1]++;
+			else
+			{
+				if (actualInRow[1] > maxNumbersInRow[actualInRow[0]])
+				{
+					maxNumbersInRow[actualInRow[0]] = actualInRow[1];
+				}
+				actualInRow[0] = data[j];
+				actualInRow[1] = 1;
+			}
+		}
+		fclose(inputFile);
+		fprintf_s(resultFile, "outfile%d\n", i);
+		for (int j = 0; j < 11; j++)
+		{
+			fprintf_s(resultFile, "%d - %d - %d\n", j, numbersCount[j], maxNumbersInRow[j]);
+		}
 		
 		fprintf_s(outputFile, "outfile%d: liczba %d-> x razy\n", 0, 0);
 
