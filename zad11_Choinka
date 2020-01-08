@@ -1,0 +1,112 @@
+#include "pch.h"
+#include <iostream>
+#include <Windows.h>
+
+void choinka1()
+{
+	printf("            *\n"); Sleep(1000);
+
+	printf("           /");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("          /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("         /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("        /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("       /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("      /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("     /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("    /");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("#");
+	printf("\\\n"); Sleep(1000);
+
+	printf("           ###\n"); Sleep(1000);
+	printf("           ###\n"); Sleep(1000);
+}
+
+void choinka2()
+{
+	printf("");
+}
+
+int main()
+{
+	//choinka1();
+	printf("---------------------------\n");
+	choinka2();
+	printf("---------------------------\n");
+}
