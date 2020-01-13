@@ -106,24 +106,30 @@ void choinka2()
 			for (z = 0; z < 12 - j; z++) 
 				printf(" ");
 
-			for (; z < 13
- + j; z++)
+			for (; z < 13 + j; z++)
 				printf("#");
 
 			printf("\n");
 		}
 }
 
-void choinka3()
-{
 
-}
-
-int main()
+int main(int argc, char *argv[])
 {
-	choinka1();
+	//choinka1();
 	printf("---------------------------\n");
-	choinka2();
+	//choinka2();
 	printf("---------------------------\n");
-	choinka3();
+	int zmienna = atoi(*argv);
+	for (int i = 0; i < argc; i++)
+	{
+			int z;
+			for (z = 0; z < 12 - i; z++)
+				printf(" ");
+
+			for (; z < 13 + i; z++)
+				printf("#");
+
+			printf("\n");
+	}
 }
