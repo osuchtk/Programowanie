@@ -35,7 +35,7 @@ void addContact()
 {
 
 	char fileName[100];
-	sprintf_s(fileName, "contacts.txt");
+	sprintf_s(fileName, "kontakty.txt");
 	FILE* outputFile;
 	fopen_s(&outputFile, fileName, "a");
 	Contact *kontakt = inputContactAttributes();
@@ -49,7 +49,7 @@ void showContacts()
 {
 
 	char fileName[100];
-	sprintf_s(fileName, "contacts.txt");
+	sprintf_s(fileName, "kontakty.txt");
 	FILE* outputFile;
 	fopen_s(&outputFile, fileName, "r");
 
@@ -58,9 +58,10 @@ void showContacts()
 	char numer[20];
 
 	struct Contact *kontakt = (struct Contact*) malloc(sizeof(struct Contact));
-	int i = 1;
+	//int i = 1;
 	while (fgets(imie, 100, outputFile) != NULL)
 	{
+		int i=1;
 		fgets(nazwisko, 100, outputFile);
 		fgets(numer, 20, outputFile);
 
@@ -68,13 +69,13 @@ void showContacts()
 		sprintf_s(kontakt->nazwisko, nazwisko);
 		sprintf_s(kontakt->numer, numer);
 
-		printf_s("|%d\t|%s|\t|%s|\t|%s", i, kontakt->imie, kontakt->nazwisko, kontakt->numer);
-		printf_s("+-------+-----------------\n");
+		printf_s("%d\t  %s  \t  %s|\t  %s", i, kontakt->imie, kontakt->nazwisko, kontakt->numer);
+		printf_s("------------------------------\n");
 		i++;
 	}
 	free(kontakt);
 	fclose(outputFile);
-	char problemy;
+	char problemy; //musi być?
 	scanf_s("%c", &problemy);
 	while (problemy == NULL);
 	{
@@ -85,23 +86,22 @@ void showContacts()
 
 void deleteContacts()
 {
-
 	int i;
 	char c;
 
 	showContacts();
 	printf_s("Ktory kontakt chcesz usunac:");
 	scanf_s("%d", &i);
-	printf_s("Czy jestes pewien? (Y/N):");
+	printf_s("Czy jestes pewien? (T/N):");
 	scanf_s("%c", &c);
-	while (c != 'Y' && c != 'N')
+	while (c != 'T' && c != 'N')
 	{
 		scanf_s("%c", &c);
 	}
-	if (c == 'Y')
+	if (c == 'T')
 	{
 		char fileName[100];
-		sprintf_s(fileName, "contacts.txt");
+		sprintf_s(fileName, "kontakty.txt");
 		FILE* inputFile;
 		FILE* outputFile;
 		fopen_s(&inputFile, fileName, "r");
@@ -162,16 +162,16 @@ void editContact()
 	showContacts();
 	printf_s("Ktory kontakt chcesz edytowac:");
 	scanf_s("%d", &i);
-	printf_s("Czy jestes pewien? (Y/N):");
+	printf_s("Czy jestes pewien? (T/N):");
 	scanf_s("%c", &c);
-	while (c != 'Y' && c != 'N')
+	while (c != 'T' && c != 'N')
 	{
 		scanf_s("%c", &c);
 	}
-	if (c == 'Y')
+	if (c == 'T')
 	{
 		char fileName[100];
-		sprintf_s(fileName, "contacts.txt");
+		sprintf_s(fileName, "kontakty.txt");
 		FILE* inputFile;
 		FILE* outputFile;
 		fopen_s(&inputFile, fileName, "r");
@@ -228,17 +228,16 @@ void editContact()
 
 int main()
 {
-	printf("BAZA DANYCH v1.0\nC- tworzenie wpisow\nR- przegladanie danych\nU- aktualizacja wspiow\nD- kasowanie wspisow\nE- wyjscie z programu\n");
+	printf("A- tworzenie wpisow	R- przegladanie danych	U- aktualizacja wspiow	D- kasowanie wspisow	E- wyjscie z programu\n\n");
 
 	for (; ;)
 	{
 		char znak;
-		char potwierdzenie='Q';
 		znak = getchar();
 
 		switch (znak)
 		{
-		case 'C':
+		case 'A':
 			addContact();
 			break;
 
@@ -257,9 +256,6 @@ int main()
 		case 'E':
 			exit(0);
 			break;
-
-		default:
-			printf("Blad\n");
 		}
 	}
 }
