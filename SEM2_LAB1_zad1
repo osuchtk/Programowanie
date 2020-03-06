@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <iostream>
+#include <string>
 using namespace std;
 
 struct Zawodnik
@@ -8,27 +9,39 @@ struct Zawodnik
 	int wynik1;
 	int wynik2;
 	int wynik3;
-} zaw1, zaw2;
+} zaw1, zaw2, zaw3;
+
 
 void wyniki()
 {
-	cout << "Wynik po 1 wyscigu:" << endl;
-	cout << "Zawodnik1: " << zaw1.wynik1 << endl;
-	cout << "Zawodnik2: " << zaw2.wynik1 << endl;
+	cout << "Zawodnicy bioracy udzial:" << endl;
+	cout << "Zawodnik1: " << zaw1.nazwisko << endl;
+	cout << "Zawodnik2: " << zaw2.nazwisko << endl;
+	cout << "Zawodnik3: " << zaw3.nazwisko << endl;
 }
 
 void wyniki(int n)
 {
-	cout << "Wynik po 2 wyscigach:" << endl;
-	cout << "Zawodnik1: " << zaw1.wynik1 << " || " << zaw1.wynik2 << endl;
-	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << endl;
+	cout << "Wynik po 1 wyscigu:" << endl;
+	cout << "Zawodnik1: " << zaw1.wynik1 << endl;
+	cout << "Zawodnik2: " << zaw2.wynik1 << endl;
+	cout << "Zawodnik3: " << zaw3.wynik1 << endl;
 }
 
 void wyniki(int n, int k)
 {
+	cout << "Wynik po 2 wyscigach:" << endl;
+	cout << "Zawodnik1: " << zaw1.wynik1 << " || " << zaw1.wynik2 << endl;
+	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << endl;
+	cout << "Zawodnik3: " << zaw3.wynik1 << " || " << zaw3.wynik2 << endl;
+}
+
+void wyniki(int n, int k, int l) 
+{
 	cout << "Wynik po 3 wyscigach:" << endl;
 	cout << "Zawodnik1: " << zaw1.wynik1 << " || " << zaw1.wynik2 << " || " << zaw1.wynik3 << endl;
 	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << " || " << zaw2.wynik3 << endl;
+	cout << "Zawodnik3: " << zaw3.wynik1 << " || " << zaw2.wynik2 << " || " << zaw3.wynik3 << endl;
 }
 
 
@@ -36,7 +49,7 @@ int main()
 {
 	zaw1.nazwisko = "Nowak";
 	zaw1.wynik1 = 1;
-	zaw1.wynik2 = 1;
+	zaw1.wynik2 = 3;
 	zaw1.wynik3 = 2;
 
 	zaw2.nazwisko = "Kowalski";
@@ -44,9 +57,18 @@ int main()
 	zaw2.wynik2 = 2;
 	zaw2.wynik3 = 1;
 
-	int a = 1; int b = 2;
+	zaw3.nazwisko = "Jurczak";
+	zaw3.wynik1 = 3;
+	zaw3.wynik2 = 1;
+	zaw3.wynik3 = 3;
 
-	wyniki();
-	wyniki(a);
-	wyniki(a, b);
+	int a = 1; int b = 2; int c = 3;
+
+	wyniki(); // same nazwiska
+	cout << endl;
+	wyniki(a); // wyniki po 1 wyscigu
+	cout << endl;
+	wyniki(a, b); // wyniki po 1 i 2 wyscigu 
+	cout << endl;
+	wyniki(a, b, c); // wyniki po  1,2 i 3 wyscigu
 }
