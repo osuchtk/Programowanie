@@ -1,6 +1,7 @@
+#include "pch.h"
 #include <iostream>
 using namespace std;
-	
+
 struct Zawodnik
 {
 	string nazwisko;
@@ -16,18 +17,18 @@ void wyniki()
 	cout << "Zawodnik2: " << zaw2.wynik1 << endl;
 }
 
-void wyniki2()
+void wyniki(int n)
 {
 	cout << "Wynik po 2 wyscigach:" << endl;
 	cout << "Zawodnik1: " << zaw1.wynik1 << " || " << zaw1.wynik2 << endl;
-	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 <<endl;
+	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << endl;
 }
 
-void wyniki3()
+void wyniki(int n, int k)
 {
 	cout << "Wynik po 3 wyscigach:" << endl;
 	cout << "Zawodnik1: " << zaw1.wynik1 << " || " << zaw1.wynik2 << " || " << zaw1.wynik3 << endl;
-	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << " || " <<zaw2.wynik3 << endl;
+	cout << "Zawodnik2: " << zaw2.wynik1 << " || " << zaw2.wynik2 << " || " << zaw2.wynik3 << endl;
 }
 
 
@@ -43,7 +44,9 @@ int main()
 	zaw2.wynik2 = 2;
 	zaw2.wynik3 = 1;
 
+	int a = 1; int b = 2;
+
 	wyniki();
-	wyniki2();
-	wyniki3();
+	wyniki(a);
+	wyniki(a, b);
 }
