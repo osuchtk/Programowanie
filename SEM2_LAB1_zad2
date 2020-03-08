@@ -9,15 +9,8 @@ struct Zawodnik
 	int wyscig1;
 	int wyscig2;
 	int wyscig3;
-	int punkty=0;
+	int punkty = 0;
 };
-
-/*struct Punkty
-{
-	int pierwszy = 4;
-	int drugi = 2;
-	int trzeci = 1;
-};*/
 
 void pobierz(struct Zawodnik* tab, int ile)
 {
@@ -50,25 +43,7 @@ void punktacja(struct Zawodnik* tab, int ile)
 {
 	for (int i = 0; i < ile; i++)
 	{
-		tab[i].punkty = 0;
-		switch (tab->wyscig1)
-		{
-		case 1:
-			tab[i].punkty += 4;
-			break;
-		case 2:
-			tab[i].punkty += 2;
-			break;
-		case 3:
-			tab[i].punkty += 1;
-			break;
-		default:
-			tab[i].punkty += 0;
-			break;
-		}
-		cout << tab[i].punkty << endl;
-
-		switch (tab->wyscig2)
+		switch (tab[i].wyscig1)
 		{
 		case 1:
 			tab[i].punkty += 4;
@@ -84,9 +59,7 @@ void punktacja(struct Zawodnik* tab, int ile)
 			break;
 		}
 
-		cout << tab[i].punkty << endl;
-
-		switch (tab->wyscig3)
+		switch (tab[i].wyscig2)
 		{
 		case 1:
 			tab[i].punkty += 4;
@@ -102,10 +75,23 @@ void punktacja(struct Zawodnik* tab, int ile)
 			break;
 		}
 
-		cout << tab[i].punkty << endl;
+		switch (tab[i].wyscig3)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
 
 		cout << "Nazwisko: " << tab[i].nazwisko << " || " << "Liczba punktow po trzech wyscigach: " << tab[i].punkty << endl;
-		tab[i-1].punkty = 0;
 	}
 }
 
@@ -118,49 +104,27 @@ int main()
 	Zawodnik *dane = new Zawodnik[n];
 
 	pobierz(dane, n);
-	//cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby wyswitlic punktacje\nWybierz (3) aby zakonczyc program" << endl;
-	//int w;
-	//cin >> w;
-	//system("cls");
+	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby wyswitlic punktacje\nWybierz (3) aby zakonczyc program" << endl;
+	int wybor;
+	cin >> wybor;
+	system("cls");
 
-	//switch (w)
-	//{
-	//case 1:
-		wyswietl(dane, n);
-		//break;
+	switch (wybor)
+	{
+	case 1:
+	wyswietl(dane, n);
+	break;
 
-	//case 2:
-		punktacja(dane, n);
-		//break;
+	case 2:
+	punktacja(dane, n);
+	break;
 
-	//case 3:
-		//exit(0);
-		//break;
+	case 3:
+	exit(0);
+	break;
 
-	//default:
-		//cout << "Blad, wybierz ponownie";
-		//break;
-	//}
+	default:
+	cout << "Blad";
+	break;
+	}
 }
-
-/*if (tab->miejsce1 == 1)
-pkt += 4;
-if (tab->miejsce2 == 2)
-pkt += 2;
-if (tab->miejsce3 == 3)
-pkt += 1;
-
-
-		switch (tab->miejsce1)
-		{
-		case 1:
-			pkt += 4;
-			break;
-		case 2:
-			pkt += 2;
-			break;
-		case 3:
-			pkt += 1;
-			break;
-		}
-*/
