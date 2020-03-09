@@ -95,6 +95,15 @@ void punktacja(struct Zawodnik* tab, int ile)
 	}
 }
 
+void klasyfikacja(struct Zawodnik *tab, int ile)
+{
+	cout << "KLASYFIKACJA" << endl;
+	for (int i = 0; i < ile; i++)
+	{
+		cout << (i+1) << ". " << tab[i].nazwisko << endl;
+	}
+}
+
 int main()
 {
 	int n;
@@ -104,7 +113,7 @@ int main()
 	Zawodnik *dane = new Zawodnik[n];
 
 	pobierz(dane, n);
-	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby wyswitlic punktacje\nWybierz (3) aby zakonczyc program" << endl;
+	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby wyswitlic punktacje\nWybierz (3) aby zobaczyc klasyfikacje\nWybierz (4) aby zakonczyc program" << endl;
 	int wybor;
 	cin >> wybor;
 	system("cls");
@@ -112,19 +121,23 @@ int main()
 	switch (wybor)
 	{
 	case 1:
-	wyswietl(dane, n);
-	break;
+		wyswietl(dane, n);
+		break;
 
 	case 2:
-	punktacja(dane, n);
-	break;
+		punktacja(dane, n);
+		break;
 
 	case 3:
-	exit(0);
-	break;
+		klasyfikacja(dane, n);
+		break;
+
+	case 4:
+		exit(0);
+		break;
 
 	default:
-	cout << "Blad";
-	break;
+		cout << "Blad";
+		break;
 	}
 }
