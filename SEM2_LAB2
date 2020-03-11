@@ -1,0 +1,166 @@
+#include "pch.h"
+#include <iostream>
+#include <string>
+#include<iomanip>
+using namespace std;
+
+class Zawodnik
+{
+	public:
+		string nazwisko;
+		string imie;
+		string klub;
+		int wyscig1;
+		int wyscig2;
+		int wyscig3;
+		double pesel[11];
+		int rok_ur;
+		int punkty;
+
+		void wyswietl(class Zawodnik* tab, int ile);
+		void dane_zaw(class Zawodnik* tab, int ile);
+		void punktacja(class Zawodnik* tab, int ile);
+};
+
+void pobierz(class Zawodnik* tab, int ile)
+{
+	for (int i = 0; i < ile; i++)
+	{
+		cout << "Podaj imie: ";
+		cin >> tab[i].imie;
+		cout << "Podaj nazwisko: ";
+		cin >> tab[i].nazwisko;
+		cout << "Podaj pesel: ";
+		cin >> tab[i].pesel[11];
+		cout << "Podaj rok urodzenia: ";
+		cin >> tab[i].rok_ur;
+		cout << "Podaj nazwe klubu zawodnika: ";
+		cin >> tab[i].klub;
+		cout << "Miejsce po pierwszym wyscigu: ";
+		cin >> tab[i].wyscig1;
+		cout << "Miejsce po drugim wyscigu: ";
+		cin >> tab[i].wyscig2;
+		cout << "Miejsce po trzecim wyscigu: ";
+		cin >> tab[i].wyscig3;
+		system("cls");
+	}
+}
+
+void Zawodnik::dane_zaw(class Zawodnik* tab, int ile)
+{
+	for (int i = 0; i < ile; i++)
+	{
+		cout << i+1 << ". Nazwisko, imie: " << tab[i].nazwisko << " " << tab[i].imie << endl;
+		cout << "   Pesel: " << setprecision(15) << tab[i].pesel[11] << endl;
+		cout << "   Rok urodzenia: " << tab[i].rok_ur << endl;
+		cout << "   Klub: " << tab[i].klub << endl;
+		cout << "\n";
+	}
+}
+
+void Zawodnik::wyswietl(class Zawodnik* tab, int ile)
+{
+	for (int i = 0; i < ile; i++)
+	{
+		cout << "Nazwisko, imie: " << tab[i].nazwisko << " " << tab[i].imie << endl;
+		cout << "Miejsce po pierwszym wyscigu: " << tab[i].wyscig1 << endl;
+		cout << "Miejsce po drugim wyscigu: " << tab[i].wyscig2 << endl;
+		cout << "Miejsce po trzecim wyscigu: " << tab[i].wyscig3 << endl << endl;
+	}
+}
+
+void Zawodnik::punktacja(class Zawodnik* tab, int ile)
+{
+	for (int i = 0; i < ile; i++)
+	{
+		tab[i].punkty = 0;
+
+		switch (tab[i].wyscig1)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+
+		switch (tab[i].wyscig2)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+
+		switch (tab[i].wyscig3)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+
+		cout << "Nazwisko: " << tab[i].nazwisko << " || " << "Liczba punktow po trzech wyscigach: " << tab[i].punkty << endl;
+	}
+}
+
+int main()
+{
+	int n;
+	cout << "Podaj liczbe zawodnikow: ";
+	cin >> n;
+	system("cls");
+	Zawodnik *dane = new Zawodnik[n];
+
+	pobierz(dane, n);
+	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program" << endl;
+	int wybor;
+	cin >> wybor;
+	system("cls");
+
+	switch (wybor)
+	{
+	case 1:
+		dane->wyswietl(dane, n);
+		break;
+
+	case 2:
+		dane->dane_zaw(dane, n);
+		break;
+
+	case 3:
+		dane->punktacja(dane, n);
+		break;
+
+	case 4:
+		exit(0);
+		break;
+
+	default:
+		cout << "Blad";
+		break;
+	}
+}
