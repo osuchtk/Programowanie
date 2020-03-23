@@ -22,24 +22,11 @@ public:
 	void punktacja(class Zawodnik* tab, int ile); 
 
 	//tworzenie konstruktora bez wartosci
-	Zawodnik()
-	{
-		//cout << "***KONSTRUKTOR BEZ WARTOSCI ZOSTAL WYWOLANY***" << endl;
-		this->nazwisko;
-		this->imie;
-		this->pesel;
-		this->rok_ur;
-		this->klub;
-		this->wyscig1;
-		this->wyscig2;
-		this->wyscig3;
-	}
+
 
 	//tworzenie konstruktora z wartosciami
-	Zawodnik(string n, string i, double p, int r, string k, int w1, int w2, int w3)
+	Zawodnik(string n = "Nowak", string i = "Jan", double p = 0, int r = 1900, string k = "ABCD", int w1 = 1, int w2 = 1, int w3 = 1)
 	{
-
-		//cout << "***KONSTRUKTOR Z WARTOSCIAMI ZOSTAL WYWOLANY***" << endl;
 		this-> nazwisko = n;
 		this->imie = i;
 		this->pesel = p;
@@ -50,35 +37,21 @@ public:
 		this->wyscig3 = w3;
 	}
 
-	//przeciążenie konstruktora (brak wyscig3)
-	Zawodnik(string n, string i, double p, int r, string k, int w1, int w2)
-	{
-		//cout << "***KONSTRUKTOR PRZECIAZONY Z WARTOSCIAMI ZOSTAL WYWOLANY***" << endl;
-		this->nazwisko = n;
-		this->imie = i;
-		this->pesel = p;
-		this->rok_ur = r;
-		this->klub = k;
-		this->wyscig1 = w1;
-		this->wyscig2 = w2;
-	}
-
 	//przeciążenie konstruktora (brak imienia i nazwiska)
-	Zawodnik(double p, int r, string k, int w1, int w2, int w3)
+	/*Zawodnik(double p = 0, int r = 1900, string k = "ABCD", int w1 = 1, int w2 = 1, int w3 = 1)
 	{
-		//cout << "***KONSTRUKTOR PRZECIAZONY Z WARTOSCIAMI ZOSTAL WYWOLANY***" << endl;
 		this->pesel = p;
 		this->rok_ur = r;
 		this->klub = k;
 		this->wyscig1 = w1;
 		this->wyscig2 = w2;
 		this->wyscig3 = w3;
-	}
+	}*/
 
 	//destruktor
 	~Zawodnik()
 	{
-		cout << "I cyk destruktor";	
+		cout << "Koniec";
 	}
 };
 
@@ -189,10 +162,6 @@ void Zawodnik::punktacja(class Zawodnik* tab, int ile)
 
 int main()
 {
-	{Zawodnik test();  //tworzenie obiektu za pomocą konstruktora bez wartości
-	Zawodnik test1("Imie", "Nazwisko", 1234, 1950, "AbCd", 3, 2, 1);
-	Zawodnik test2(1234, 2000, "abcd", 1, 2, 3);
-	Zawodnik test3("Nowak", "Jan", 0, 1900, "ABCD", 1, 1, 1); }  //tworzenie obiektu za pomocą konstrukotra z wartościami
 	int n;
 	cout << "Podaj liczbe zawodnikow: ";
 	cin >> n;
@@ -235,5 +204,5 @@ int main()
 			break;
 		}
 	}
-	delete dane;
+	//delete &dane;
 }
