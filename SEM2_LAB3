@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include<iomanip>
+#include <crtdbg.h>
 using namespace std;
 
 class Zawodnik
@@ -77,15 +78,7 @@ public:
 	//destruktor
 	~Zawodnik()
 	{
-		delete &nazwisko;
-		delete &imie;
-		delete &klub;
-		delete &wyscig1;
-		delete &wyscig2;
-		delete &wyscig3;
-		delete &rok_ur;
-		delete &punkty;
-		delete &pesel;
+		cout << "I cyk destruktor";	
 	}
 };
 
@@ -242,6 +235,5 @@ int main()
 			break;
 		}
 	}
-
 	delete dane;
 }
