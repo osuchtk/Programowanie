@@ -1,208 +1,229 @@
-#include <iostream>
-#include <string>
-#include<iomanip>
-#include <crtdbg.h>
-using namespace std;
+	#include <iostream>
+	#include <string>
+	#include<iomanip>
+	#include <conio.h>
+	using namespace std;
 
-class Zawodnik
-{
-public:
-	string nazwisko;
-	string imie;
-	string klub;
-	int wyscig1;
-	int wyscig2;
-	int wyscig3;
-	int rok_ur;
-	int punkty;
-	double pesel;
-
-	void wyswietl(class Zawodnik* tab, int ile);
-	void dane_zaw(class Zawodnik* tab, int ile);
-	void punktacja(class Zawodnik* tab, int ile); 
-
-	//tworzenie konstruktora bez wartosci
-
-
-	//tworzenie konstruktora z wartosciami
-	Zawodnik(string n = "Nowak", string i = "Jan", double p = 0, int r = 1900, string k = "ABCD", int w1 = 1, int w2 = 1, int w3 = 1)
+	class Zawodnik
 	{
-		this-> nazwisko = n;
-		this->imie = i;
-		this->pesel = p;
-		this->rok_ur = r;
-		this->klub = k;
-		this->wyscig1 = w1;
-		this->wyscig2 = w2;
-		this->wyscig3 = w3;
+	public:
+		string nazwisko;
+		string imie;
+		string klub;
+		int wyscig1;
+		int wyscig2;
+		int wyscig3;
+		int rok_ur;
+		int punkty;
+		double pesel;
+
+		void wyswietl(class Zawodnik* tab, int ile);
+		void dane_zaw(class Zawodnik* tab, int ile);
+		void punktacja(class Zawodnik* tab, int ile); 
+
+		//tworzenie konstruktora bez wartosci
+		Zawodnik()
+		{
+			this->nazwisko;
+			this->imie;
+			this->pesel;
+			this->rok_ur;
+			this->klub;
+			this->wyscig1;
+			this->wyscig2;
+			this->wyscig3;
+		}
+
+		//tworzenie konstruktora z wartosciami
+		Zawodnik(string n, string i, double p, int r, string k , int w1, int w2, int w3)
+		{
+			//cout << "Tworze sie" << endl;
+			this-> nazwisko = n;
+			this->imie = i;
+			this->pesel = p;
+			this->rok_ur = r;
+			this->klub = k;
+			this->wyscig1 = w1;
+			this->wyscig2 = w2;
+			this->wyscig3 = w3;
+		}
+
+		//przeciążenie konstruktora (brak imienia i nazwiska)
+		Zawodnik(double p, int r, string k, int w1, int w2, int w3)
+		{
+			this->pesel = p;
+			this->rok_ur = r;
+			this->klub = k;
+			this->wyscig1 = w1;
+			this->wyscig2 = w2;
+			this->wyscig3 = w3;
+		}
+
+		//destruktor
+		~Zawodnik()
+		{
+			cout << "Czesc" << endl;
+		}
+	};
+
+	void pobierz(class Zawodnik* tab, int ile)
+	{
+		for (int i = 0; i < ile; i++)
+		{
+			cout << "Podaj imie: ";
+			cin >> tab[i].imie;
+			cout << "Podaj nazwisko: ";
+			cin >> tab[i].nazwisko;
+			cout << "Podaj pesel: ";
+			cin >> tab[i].pesel;
+			cout << "Podaj rok urodzenia: ";
+			cin >> tab[i].rok_ur;
+			cout << "Podaj nazwe klubu zawodnika: ";
+			cin >> tab[i].klub;
+			cout << "Miejsce po pierwszym wyscigu: ";
+			cin >> tab[i].wyscig1;
+			cout << "Miejsce po drugim wyscigu: ";
+			cin >> tab[i].wyscig2;
+			cout << "Miejsce po trzecim wyscigu: ";
+			cin >> tab[i].wyscig3;
+			system("cls");
+		}
 	}
 
-	//przeciążenie konstruktora (brak imienia i nazwiska)
-	/*Zawodnik(double p = 0, int r = 1900, string k = "ABCD", int w1 = 1, int w2 = 1, int w3 = 1)
+	void Zawodnik::dane_zaw(class Zawodnik* tab, int ile)
 	{
-		this->pesel = p;
-		this->rok_ur = r;
-		this->klub = k;
-		this->wyscig1 = w1;
-		this->wyscig2 = w2;
-		this->wyscig3 = w3;
-	}*/
-
-	//destruktor
-	~Zawodnik()
-	{
-		cout << "Koniec";
+		for (int i = 0; i < ile; i++)
+		{
+			cout << i + 1 << ". Nazwisko, imie: " << tab[i].nazwisko << " " << tab[i].imie << endl;
+			cout << "   Pesel: " << setprecision(15) << tab[i].pesel << endl;
+			cout << "   Rok urodzenia: " << tab[i].rok_ur << endl;
+			cout << "   Klub: " << tab[i].klub << endl;
+			cout << "\n";
+		}
 	}
-};
 
-void pobierz(class Zawodnik* tab, int ile)
-{
-	for (int i = 0; i < ile; i++)
+	void Zawodnik::wyswietl(class Zawodnik* tab, int ile)
 	{
-		cout << "Podaj imie: ";
-		cin >> tab[i].imie;
-		cout << "Podaj nazwisko: ";
-		cin >> tab[i].nazwisko;
-		cout << "Podaj pesel: ";
-		cin >> tab[i].pesel;
-		cout << "Podaj rok urodzenia: ";
-		cin >> tab[i].rok_ur;
-		cout << "Podaj nazwe klubu zawodnika: ";
-		cin >> tab[i].klub;
-		cout << "Miejsce po pierwszym wyscigu: ";
-		cin >> tab[i].wyscig1;
-		cout << "Miejsce po drugim wyscigu: ";
-		cin >> tab[i].wyscig2;
-		cout << "Miejsce po trzecim wyscigu: ";
-		cin >> tab[i].wyscig3;
+		for (int i = 0; i < ile; i++)
+		{
+			cout << "Nazwisko, imie: " <<tab[i].nazwisko << " " << tab[i].imie << endl;
+			cout << "Miejsce po pierwszym wyscigu: " << tab[i].wyscig1 << endl;
+			cout << "Miejsce po drugim wyscigu: " << tab[i].wyscig2 << endl;
+			cout << "Miejsce po trzecim wyscigu: " << tab[i].wyscig3 << endl << endl;
+		}
+	}
+
+	void Zawodnik::punktacja(class Zawodnik* tab, int ile)
+	{
+		for (int i = 0; i < ile; i++)
+		{
+			tab[i].punkty = 0;
+
+			switch (tab[i].wyscig1)
+			{
+			case 1:
+				tab[i].punkty += 4;
+				break;
+			case 2:
+				tab[i].punkty += 2;
+				break;
+			case 3:
+				tab[i].punkty += 1;
+				break;
+			default:
+				tab[i].punkty += 0;
+				break;
+			}
+
+			switch (tab[i].wyscig2)
+			{
+			case 1:
+				tab[i].punkty += 4;
+				break;
+			case 2:
+				tab[i].punkty += 2;
+				break;
+			case 3:
+				tab[i].punkty += 1;
+				break;
+			default:
+				tab[i].punkty += 0;
+				break;
+			}
+
+			switch (tab[i].wyscig3)
+			{
+			case 1:
+				tab[i].punkty += 4;
+				break;
+			case 2:
+				tab[i].punkty += 2;
+				break;
+			case 3:
+				tab[i].punkty += 1;
+				break;
+			default:
+				tab[i].punkty += 0;
+				break;
+			}
+
+			cout << "Nazwisko: " << tab[i].nazwisko << " || " << "Liczba punktow po trzech wyscigach: " << tab[i].punkty << endl << endl;
+		}
+	}
+
+	int main()
+	{
+		{
+			Zawodnik konstruktor();
+			Zawodnik konstruktor1("Nowak", "Jan", 0, 1900, "ABCD", 1, 2, 3);
+			cout << "Obiekt z konstruktora\n" << konstruktor1.nazwisko << " " << konstruktor1.imie << " " << konstruktor1.rok_ur << endl;
+			Zawodnik konstruktor2(0, 1950, "ABCD", 3, 2, 1);
+			cout << "Obiekt z przeciazonego konstruktora\n" << konstruktor2.rok_ur << " " << konstruktor2.pesel << " " << konstruktor2.wyscig3 << "\nNacisnij dowolny przycisk" << endl;
+			getchar();
+		}
 		system("cls");
-	}
-}
-
-void Zawodnik::dane_zaw(class Zawodnik* tab, int ile)
-{
-	for (int i = 0; i < ile; i++)
-	{
-		cout << i + 1 << ". Nazwisko, imie: " << tab[i].nazwisko << " " << tab[i].imie << endl;
-		cout << "   Pesel: " << setprecision(15) << tab[i].pesel << endl;
-		cout << "   Rok urodzenia: " << tab[i].rok_ur << endl;
-		cout << "   Klub: " << tab[i].klub << endl;
-		cout << "\n";
-	}
-}
-
-void Zawodnik::wyswietl(class Zawodnik* tab, int ile)
-{
-	for (int i = 0; i < ile; i++)
-	{
-		cout << "Nazwisko, imie: " <<tab[i].nazwisko << " " << tab[i].imie << endl;
-		cout << "Miejsce po pierwszym wyscigu: " << tab[i].wyscig1 << endl;
-		cout << "Miejsce po drugim wyscigu: " << tab[i].wyscig2 << endl;
-		cout << "Miejsce po trzecim wyscigu: " << tab[i].wyscig3 << endl << endl;
-	}
-}
-
-void Zawodnik::punktacja(class Zawodnik* tab, int ile)
-{
-	for (int i = 0; i < ile; i++)
-	{
-		tab[i].punkty = 0;
-
-		switch (tab[i].wyscig1)
-		{
-		case 1:
-			tab[i].punkty += 4;
-			break;
-		case 2:
-			tab[i].punkty += 2;
-			break;
-		case 3:
-			tab[i].punkty += 1;
-			break;
-		default:
-			tab[i].punkty += 0;
-			break;
-		}
-
-		switch (tab[i].wyscig2)
-		{
-		case 1:
-			tab[i].punkty += 4;
-			break;
-		case 2:
-			tab[i].punkty += 2;
-			break;
-		case 3:
-			tab[i].punkty += 1;
-			break;
-		default:
-			tab[i].punkty += 0;
-			break;
-		}
-
-		switch (tab[i].wyscig3)
-		{
-		case 1:
-			tab[i].punkty += 4;
-			break;
-		case 2:
-			tab[i].punkty += 2;
-			break;
-		case 3:
-			tab[i].punkty += 1;
-			break;
-		default:
-			tab[i].punkty += 0;
-			break;
-		}
-
-		cout << "Nazwisko: " << tab[i].nazwisko << " || " << "Liczba punktow po trzech wyscigach: " << tab[i].punkty << endl << endl;
-	}
-}
-
-int main()
-{
-	int n;
-	cout << "Podaj liczbe zawodnikow: ";
-	cin >> n;
-	system("cls");
-	Zawodnik *dane = new Zawodnik[n];
-
-	pobierz(dane, n);
-	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program" << endl;
-	int wybor;
-
-	while (true)
-	{
-		cin >> wybor;
+		int n;
+		cout << "Podaj liczbe zawodnikow: ";
+		cin >> n;
 		system("cls");
+		Zawodnik *dane = new Zawodnik[n];
 
-		switch (wybor)
+		pobierz(dane, n);
+		cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program" << endl;
+		int wybor;
+
+		while (true)
 		{
-		case 1:
-			dane->wyswietl(dane, n);
-			cout << "Wybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
-			break;
+			cin >> wybor;
+			system("cls");
 
-		case 2:
-			dane->dane_zaw(dane, n);
-			cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
-			break;
+			switch (wybor)
+			{
+			case 1:
+				dane->wyswietl(dane, n);
+				cout << "Wybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
+				break;
 
-		case 3:
-			dane->punktacja(dane, n);
-			cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (4) aby zakonczyc program\n" << endl;
-			break;
+			case 2:
+				dane->dane_zaw(dane, n);
+				cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
+				break;
 
-		case 4:
-			exit(0);
-			break;
+			case 3:
+				dane->punktacja(dane, n);
+				cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (4) aby zakonczyc program\n" << endl;
+				break;
 
-		default:
-			cout << "Blad\n" << endl;
-			cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
-			break;
+			case 4:
+				getchar();
+				exit(0);
+				break;
+
+			default:
+				cout << "Blad\n" << endl;
+				cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby zakonczyc program\n" << endl;
+				break;
+			}
 		}
+		delete dane;
 	}
-	//delete &dane;
-}
