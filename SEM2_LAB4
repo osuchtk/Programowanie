@@ -12,47 +12,40 @@ public:
 	string nazwisko;
 	string imie;
 	string klub;
+	string pesel;
 	int wyscig1;
 	int wyscig2;
 	int wyscig3;
 	int rok_ur;
 	int punkty;
-	double pesel;
 
 	void wyswietl(class Zawodnik* tab, int ile);
 	void dane_zaw(class Zawodnik* tab, int ile);
 	void punktacja(class Zawodnik* tab, int ile);
+	void punktacja_do_pliku(class Zawodnik *tab, int ile);
 
 	//tworzenie konstruktora bez wartosci
-	Zawodnik()
+	Zawodnik() = default;
+
+	//tworzenie konstruktora z listą inicjalizacyjnną
+	Zawodnik(string n, string i, string k, string p, int w1, int w2, int w3, int r) : nazwisko(n), imie(i), klub(k), pesel(p), wyscig1(w1), wyscig2(w2), wyscig3(w3), rok_ur(r)
 	{
-		this->nazwisko;
-		this->imie;
-		this->pesel;
-		this->rok_ur;
-		this->klub;
-		this->wyscig1;
-		this->wyscig2;
-		this->wyscig3;
+
 	}
 
-	//tworzenie konstruktora z wartosciami
-	Zawodnik(string n, string i, double p, int r, string k, int w1, int w2, int w3)
+	//konstruktor kopiujący
+	Zawodnik(Zawodnik const& kopia)
 	{
-		//cout << "Tworze sie" << endl;
-		this->nazwisko = n;
-		this->imie = i;
-		this->pesel = p;
-		this->rok_ur = r;
-		this->klub = k;
-		this->wyscig1 = w1;
-		this->wyscig2 = w2;
-		this->wyscig3 = w3;
+		nazwisko = kopia.nazwisko;
+		imie = kopia.imie;
+		klub = kopia.klub;
+		pesel = kopia.pesel;
+		wyscig1 = kopia.wyscig1;
+		wyscig2 = kopia.wyscig2;
+		wyscig3 = kopia.wyscig3;
+		rok_ur = kopia.rok_ur;
 	}
-
-	//przeciążenie konstruktora (brak imienia i nazwiska)
 	
-
 	//destruktor
 	~Zawodnik()
 	{
@@ -60,7 +53,7 @@ public:
 	}
 };
 
-void pobierz(class Zawodnik* tab, int ile)
+void pobierz(class Zawodnik *tab, int ile)
 {
 	for (int i = 0; i < ile; i++)
 	{
@@ -89,7 +82,7 @@ void Zawodnik::dane_zaw(class Zawodnik* tab, int ile)
 	for (int i = 0; i < ile; i++)
 	{
 		cout << i + 1 << ". Nazwisko, imie: " << tab[i].nazwisko << " " << tab[i].imie << endl;
-		cout << "   Pesel: " << setprecision(15) << tab[i].pesel << endl;
+		cout << "   Pesel: " << tab[i].pesel << endl;
 		cout << "   Rok urodzenia: " << tab[i].rok_ur << endl;
 		cout << "   Klub: " << tab[i].klub << endl;
 		cout << "\n";
@@ -165,20 +158,76 @@ void Zawodnik::punktacja(class Zawodnik* tab, int ile)
 	}
 }
 
+void Zawodnik::punktacja_do_pliku(class Zawodnik *tab, int ile)
+{
+	for (int i = 0; i < ile; i++)
+	{
+		tab[i].punkty = 0;
+
+		switch (tab[i].wyscig1)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+
+		switch (tab[i].wyscig2)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+
+		switch (tab[i].wyscig3)
+		{
+		case 1:
+			tab[i].punkty += 4;
+			break;
+		case 2:
+			tab[i].punkty += 2;
+			break;
+		case 3:
+			tab[i].punkty += 1;
+			break;
+		default:
+			tab[i].punkty += 0;
+			break;
+		}
+	}
+}
+
 class TextFile
 {
 public:
 	string linia;
 	fstream plik;
 
-	void plik_zapis(class Zawodnik* tab, int ile, string *nazwapliku)
+	void plik_zapis(class Zawodnik *tab, int ile, string *nazwapliku)
 	{
 		plik.open(*nazwapliku+=".txt", ios::out | ios::app);
 		if (plik.good() == true)
 		{
 			for (int i = 0; i < ile; i++)
 			{
-				plik << tab[i].nazwisko <<  ";" << tab[i].imie << ";" << tab[i].pesel << ";" << tab[i].rok_ur << ";" << tab[i].klub << ";" << tab[i].wyscig1 << ";" << tab[i].wyscig2 << ";" << tab[i].wyscig3 << ";" << tab[i].punkty << ";" << endl;
+				plik << "Nazwisko: " << tab[i].nazwisko << ";" << "Imie: " << tab[i].imie << ";" << "Pesel: " << tab[i].pesel << ";" << "Rok urodzenia: " << tab[i].rok_ur << ";" << "Klub: " << tab[i].klub << ";" << "Miejsce po pierwszym wyscigu: " << tab[i].wyscig1 << ";" << "Miejsce po drugim wyscigu: " << tab[i].wyscig2 << ";" << "Miejsce po trzecim wyscigu: " << tab[i].wyscig3 << ";" << "Punkty: " << tab[i].punkty << "\n" << endl;
 			}	
 		}
 		else cout << "Blad otwieranie pliku\n";
@@ -190,11 +239,11 @@ public:
 		plik.open(*nazwapliku, ios::in);
 		if (plik.good() == true)
 		{			
-				while (!plik.eof())
-				{
-					getline(plik, linia);
-					cout << linia << endl;					
-				}			
+			while (!plik.eof())
+			{
+				getline(plik, linia, ';');
+				cout << linia << endl;
+			}
 		}
 		else cout << "Blad otwierania pliku\n";
 		plik.close();
@@ -203,21 +252,28 @@ public:
 
 int main()
 {
+	{Zawodnik *zaw = new Zawodnik("Kowalski", "Jan", "Klub", "12", 1, 2, 3, 1900);
+	cout << "Dane z konstruktora z lista: " << zaw->nazwisko  << " " << zaw->imie << endl;
+	Zawodnik *zaw1 (zaw);
+	cout << "Dane z konstruktora kopiujacego: " << zaw1->nazwisko << " " << zaw1->imie << endl;
+	system("PAUSE");
+	system("CLS"); }
 	int n;
 	string nazwa_pliku;
 	string *nazwa = &nazwa_pliku;
-	cout << "Podaj nazwe pliku tekstowego \n*tutaj beda zapisane dane oraz z tego pliku zostana odczytane,\n**jesli plik nie istnieje to zostanie utworzony\n***jesli plik o podanej nazwie istnieje to zostanie zmodyfikowany:\n ";
+	cout << "Podaj nazwe pliku tekstowego \n*tutaj beda zapisane dane oraz z tego pliku zostana odczytane,\n**jesli plik nie istnieje to zostanie utworzony\n***jesli plik o podanej nazwie istnieje to zostanie zmodyfikowany:\n";
 	cin >> *nazwa;
-	TextFile *pliktekstowy = new TextFile;;
+	TextFile *pliktekstowy = new TextFile;
 	cout << "Podaj liczbe zawodnikow: ";
 	cin >> n;
 	Zawodnik *dane = new Zawodnik[n];
 	system("cls");
 
 	pobierz(dane, n);
+	dane->punktacja_do_pliku(dane, n);
 	pliktekstowy->plik_zapis(dane, n, nazwa);
 
-	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnika\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby odczytac dane z pliku\nWybierz (5) aby zakonczyc program" << endl;
+	cout << "Wybierz (1) aby wyswitlic miejsca zajete przez zawodnikow\nWybierz (2) aby zobaczyc dane zawodnikow\nWybierz (3) aby wyswitlic punktacje\nWybierz (4) aby odczytac dane z pliku\nWybierz (5) aby zakonczyc program\nUWAGA! Opacje 1,2,3 pokazuja zawodnikow z obecnej sesji" << endl;
 	int wybor;
 
 	while (true)
@@ -257,5 +313,4 @@ int main()
 			break;
 		}
 	}
-
 }
